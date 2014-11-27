@@ -18,6 +18,7 @@ Plugin 'plasticboy/vim-markdown'
 " Configure YCM
 let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 let g:syntastic_always_populate_loc_list = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " Configure Syntastic
 "let g:syntastic_check_on_open=1
