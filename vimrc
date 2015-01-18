@@ -1,13 +1,36 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+"==========================================================
+" -- Vundle -----------------------------------------------
+"==========================================================
+
+" Install Vundle if not present
+if !filereadable(expand('~/.vim/bundle/Vundle.vim/README.md'))
+    echo "Installing Vundle..."
+    echo ""
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+endif
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-"Plugin 'Valloric/YouCompleteMe' 
+
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+
+" -- GitHub -----------------------------------------------
 "Plugin 'scrooloose/syntastic'
 "Plugin 'klen/python-mode'
 Plugin 'scrooloose/nerdtree' 
@@ -21,7 +44,10 @@ Plugin 'ervandew/supertab'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'scrooloose/nerdcommenter'
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"----------------------------------------------------------
+" -- Plugin Configuration ---------------------------------
+"----------------------------------------------------------
 " Configure NERDTree
 let NERDTreeChDirMode=2
 let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$']
@@ -31,18 +57,20 @@ map <F2> :NERDTreeToggle<CR>
 
 " Configure PyMode
 " Disable Rope Autocomplete
-let g:pymode_rope = 0
+" let g:pymode_rope = 0
 " Documentation
-let g:pymode_doc = 1
-let g:pymode_doc_key = 'K'
+" let g:pymode_doc = 1
+" let g:pymode_doc_key = 'K'
 
 " Configure Jedi-Vim
+autocmd FileType python setlocal completeopt-=preview
+let g:jedi#popup_on_dot = 0
 let g:jedi#force_py_version = 3
+let g:jedi#auto_close_doc = 1
+let g:jedi#show_call_signatures = 2
 
-" Configure YCM
-"let g:ycm_path_to_python_interpreter = '/usr/bin/python'
-"let g:syntastic_always_populate_loc_list = 1
-"let g:ycm_autoclose_preview_window_after_insertion = 1
+" Configure SuperTab
+let g:SuperTabDefaultCompletionType = "context"
 
 " Configure Syntastic
 "let g:syntastic_check_on_open=1
@@ -61,21 +89,16 @@ set t_Co=256
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+"----------------------------------------------------------
+" -- Vim Configuration ------------------------------------
+"----------------------------------------------------------
 " Syntax highlighting
 syntax on
 
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
 " Search using smartcase (ignore case unless uppercase letter in string)
-:set ignorecase
-:set smartcase
+set ignorecase
+set smartcase
 
 " Automatically change window's cwd to file's directory
 set autochdir
@@ -91,6 +114,7 @@ set backspace=indent,eol,start " allow bs over EOL, indent, start of insert
 set whichwrap=b,s,<,>,[,],~ " allow most motion keys to wrap 
 set suffixes+=.class,.pyc,.o,.so " skip bytecode files for completion
 set suffixes-=.h " don't skip C header files
+set showmatch " Show matching brackets
 
 " Number lines in files
 set nu
