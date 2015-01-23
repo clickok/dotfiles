@@ -10,7 +10,7 @@ if !filereadable(expand('~/.vim/bundle/Vundle.vim/README.md'))
     echo "Installing Vundle..."
     echo ""
     silent !mkdir -p ~/.vim/bundle
-    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+    silent !git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 endif
 
 " set the runtime path to include Vundle and initialize
