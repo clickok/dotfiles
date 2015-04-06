@@ -1,0 +1,76 @@
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(org-emphasis-alist
+   (quote
+    (("*" bold)
+     ("/" italic)
+     ("_" underline)
+     ("=" org-verbatim verbatim)
+     ("`" org-code verbatim)
+     ("~" org-code verbatim)
+     ("+"
+      (:strike-through t)))))
+ '(org-startup-indented t))
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+;; Save backup files in "~/.saves"
+(setq backup-directory-alist `(("." . "~/.saves")))
+;; Set how backups work (if this is slow, try `backup-by-copying-when-linked`)
+(setq backup-by-copying t)
+
+;; Disable splash screen
+(setq inhibit-splash-screen t)
+
+;; Show line-number in the mode line
+(line-number-mode 1)
+
+;; Show column-number in the mode line
+(column-number-mode 1)
+
+;; Use visual line mode by default
+(global-visual-line-mode 1)
+; or maybe (setq-default word-wrap 1) instead?
+
+;; Set default indentation
+(setq standard-indent 4)
+
+;; Set global highlighting of current line.
+(global-hl-line-mode 0)
+
+;; Set line-by-line scrolling
+(setq scroll-step 1)
+
+;; Turn off tab character
+;(Setq-default indent-tabs-mode nil) 
+
+;; Set UTF-8 encoding
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+
+;; Set ctrl-tab and ctrl-shift-tab to cycle buffers
+(global-set-key [(control tab)] 'next-buffer)
+(global-set-key [(control shift tab)] 'previous-buffer)
+
+;;; org-mode configuration ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Enable org-mode
+(require 'org)
+;; Make org-mode work with files ending in .org
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+
+;; Set org-agenda keybinding
+(global-set-key "\C-ca" 'org-agenda)
+
+;; Set where agenda files are to be found
+(setq org-agenda-files (list "~/Dropbox/org-notes/TODO.org"
+			     "~/Dropbox/org-notes/research/"
+			     "~/Dropbox/org-notes/research/meetings/"))
