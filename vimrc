@@ -35,7 +35,8 @@ Plugin 'gmarik/Vundle.vim'
 "Plugin 'klen/python-mode'
 Plugin 'scrooloose/nerdtree' 
 Plugin 'tpope/vim-fugitive'
-Plugin 'plasticboy/vim-markdown'
+"Plugin 'plasticboy/vim-markdown'
+Plugin 'gabrielelana/vim-markdown'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fireplace'
@@ -84,6 +85,9 @@ let g:syntastic_python_flake8_args = '--ignore=W191,E501,E128,W291,E126,E101'
 set laststatus=2
 let g:airline_powerline_fonts = 1
 set t_Co=256
+
+" Configure vim-markdown
+" 
 
 "" All of your Plugins must be added before the following line
 call vundle#end()            " required
