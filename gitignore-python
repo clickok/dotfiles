@@ -1,3 +1,14 @@
+# Scrap files
+deleteme*.py
+
+# Scrap notebooks
+_*.ipynb
+
+# Temporary files
+*~
+*.swp
+*.DS_Store
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
